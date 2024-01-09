@@ -1,0 +1,1 @@
+Luma AI has released the 1.0 version of their AI today, allowing you to generate 3D models with your own custom prompts through their website https://lumalabs.ai/genie In this example, we will generate a model for use in video games or animations.
