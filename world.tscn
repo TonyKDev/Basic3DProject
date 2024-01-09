@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ga4brol6kes6"]
+
+[ext_resource type="Shader" uid="uid://dtq8vkrpvuqfj" path="res://gridmaterial.tres" id="1_78mpy"]
+[ext_resource type="PackedScene" uid="uid://doh0w0if3r85g" path="res://character.tscn" id="2_7bd7c"]
+
+[sub_resource type="Environment" id="Environment_g3bud"]
+background_mode = 1
+background_color = Color(0.411765, 0.756863, 0.909804, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rwhea"]
+render_priority = 0
+shader = ExtResource("1_78mpy")
+shader_parameter/grid_size = 1
+shader_parameter/Color_1 = Color(0, 0.803922, 0.388235, 1)
+shader_parameter/Color_2 = Color(0, 0.898039, 0.439216, 1)
+
+[node name="World" type="Node3D"]
+
+[node name="character" parent="." instance=ExtResource("2_7bd7c")]
+transform = Transform3D(-1, 2.98023e-08, -8.74228e-08, 2.98023e-08, 1, 0, 8.74228e-08, 0, -1, 0, 1, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g3bud")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866026, 0.5, 0.5, -0.433013, 0.75, 0, 6, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+use_collision = true
+collision_mask = 7
+size = Vector3(30, 2, 30)
+material = SubResource("ShaderMaterial_rwhea")
